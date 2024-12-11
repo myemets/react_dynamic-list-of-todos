@@ -10,7 +10,6 @@ import { Loader } from './components/Loader';
 import { Todo } from './types/Todo';
 import { getTodos, getUser } from './api';
 import { User } from './types/User';
-import { Filter } from './types/Filter';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -20,11 +19,11 @@ export const App: React.FC = () => {
   const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
 
-  const [selectedOption, setSelectedOption] = useState<Filter>(Filter.ALL);
+  const [selectedOption, setSelectedOption] = useState<string>('all');
   const [query, setQuery] = useState<string>('');
 
   function handleSelectedOption(event: React.ChangeEvent<HTMLSelectElement>) {
-    setSelectedOption(event.target.value as Filter);
+    setSelectedOption(event.target.value as string);
   }
 
   function handleQueryChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -46,7 +45,7 @@ export const App: React.FC = () => {
 
   function resetFilterParams() {
     setQuery('');
-    setSelectedOption(Filter.ALL);
+    setSelectedOption('all');
   }
 
   useEffect(() => {

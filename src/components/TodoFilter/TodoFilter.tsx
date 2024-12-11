@@ -1,5 +1,3 @@
-import { Filter } from '../../types/Filter';
-
 type Props = {
   inputValue: string;
   handleSelectedOption: (event: React.ChangeEvent<HTMLSelectElement>) => void;
@@ -17,9 +15,9 @@ export const TodoFilter: React.FC<Props> = ({
     <p className="control">
       <span className="select">
         <select data-cy="statusSelect" onChange={handleSelectedOption}>
-          <option value="all">{Filter.ALL}</option>
-          <option value="active">{Filter.ACTIVE}</option>
-          <option value="completed">{Filter.COMPLETED}</option>
+          <option value="all">all</option>
+          <option value="active">active</option>
+          <option value="completed">completed</option>
         </select>
       </span>
     </p>

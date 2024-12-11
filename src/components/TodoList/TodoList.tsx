@@ -1,11 +1,10 @@
 import React, { useMemo } from 'react';
 import { Todo } from '../../types/Todo';
-import { Filter } from '../../types/Filter';
 
 type Props = {
   todos: Todo[];
   showSelectedTodo: (todo: Todo) => void;
-  selectedOption: Filter;
+  selectedOption: string;
   query: string;
   selectedTodo: Todo | null;
 };
@@ -21,11 +20,11 @@ export const TodoList: React.FC<Props> = ({
     return todos
       .filter(todo => {
         switch (selectedOption) {
-          case Filter.ACTIVE:
+          case 'active':
             return !todo.completed;
-          case Filter.COMPLETED:
+          case 'completed':
             return todo.completed;
-          case Filter.ALL:
+          case 'all':
           default:
             return true;
         }
